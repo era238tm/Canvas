@@ -1,0 +1,33 @@
+body {
+    width: fit-content;
+    background-color: #d6d6d6;
+    padding: 24px;
+}
+
+main {
+    background-color: #c2c2c2;
+    padding: 24px;
+    border-radius: 50%;
+    box-shadow: inset 2px 2px 4px #ffffff,
+        inset -2px -2px 4px #858585,
+        6px 6px 12px #5c5c5c;
+    position: relative;
+}
+
+main::before {
+    content: "";
+    background-color: #191919;
+    border-radius: 50%;
+    box-shadow: 2px 2px 4px #ffffff,
+        -2px -2px 4px #858585,
+        inset 3px 3px 6px #000000;
+    position: absolute;
+    inset: 24px;
+}
+
+canvas {
+    border-radius: 50%;
+    margin: 20px;
+    vertical-align: bottom;
+    position: relative;
+}
