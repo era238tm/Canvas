@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Ulam Spiral - Canvas</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <aside id="controls">
+        <div class="input-block">
+            <label for="scale">Spiral Scale: </label>
+            <input type="number" id="scale" value="6" min="1">
+        </div>
+
+        <div class="input-block">
+            <label for="size">Spiral Size: </label>
+            <input type="number" id="size" min="20">
+        </div>
+
+        <div class="input-block">
+            <label for="start">Number at Center: </label>
+            <input type="number" id="start" value="1" min="0">
+        </div>
+    </aside>
+
+    <main>
+        <canvas width="720" height="720"></canvas>
+    </main>
+
+    <script src="./canvas.js"></script>
+</body>
+
+</html>
