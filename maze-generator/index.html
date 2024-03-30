@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Maze Generator - Canvas</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <aside id="controls">
+        <section id="start">
+            <div class="input-block">
+                <input type="button" id="state" value="Explore">
+            </div>
+
+            <div class="input-block">
+                <label for="width">Maze Width: </label>
+                <input type="number" id="width" min="10" value="20">
+            </div>
+
+            <div class="input-block">
+                <label for="height">Maze Height: </label>
+                <input type="number" id="height" min="10" value="20">
+            </div>
+
+            <div class="input-block">
+                <input type="button" value="New Maze">
+            </div>
+        </section>
+
+        <section id="game">
+            <div id="bindings">
+                <span><kbd>ʌ</kbd> Up</span>
+                <span><kbd>></kbd> Right</span>
+                <span><kbd>v</kbd> Bottom</span>
+                <span><kbd><</kbd> Left</span>
+            </div>
+        </section>
+    </aside>
+
+    <main>
+        <canvas width="640" height="640"></canvas>
+    </main>
+
+    <script src="./canvas.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+body {
+    width: fit-content;
+    font-family: monospace;
+    background-color: #d6d6d6;
+    padding: 24px;
+    display: flex;
+    gap: 32px;
+}
+
+aside, main {
+    background-color: #c2c2c2;
+    padding: 24px;
+    border-radius: 24px;
+    box-shadow: inset 2px 2px 4px #ffffff,
+        inset -2px -2px 4px #858585,
+        6px 6px 12px #5c5c5c;
+    position: relative;
+}
+
+aside {
+    height: fit-content;
+    border-radius: 8px;
+}
+
+#start, #bindings {
+    display: grid;
+    gap: 16px;
+}
+
+#start:not(:has(#state)) {
+    display: none;
+}
+
+#bindings {
+    font-family: cursive;
+    margin-top: 32px;
+    grid-template-columns: 1fr 1fr;
+}
+
+#bindings kbd {
+    font-weight: bold;
+    padding: 4px 12px;
+    border-radius: 2px;
+    border: 2px solid #858585;
+    margin-right: 8px;
+}
+
+.input-block label {
+    margin: 4px 6px;
+    position: absolute;
+}
+
+.input-block input {
+    font-family: inherit;
+    font-size: 1.5em;
+    padding: 4px;
+    padding-top: 23px;
+}
+
+.input-block input[type=button] {
+    min-width: calc(22ch + 8px);
+    width: 100%;
+    padding-block: 7px 8px;
+    cursor: pointer;
+}
+
+main::before {
+    content: "";
+    background-color: #0f0f0f;
+    border-radius: 8px;
+    box-shadow: 2px 2px 4px #ffffff,
+        -2px -2px 4px #858585,
+        inset 3px 3px 6px #000000;
+    position: absolute;
+    inset: 24px;
+}
+
+canvas {
+    max-height: calc(100vh - 152px);
+    background-color: #ebebeb;
+    margin: 20px;
+    vertical-align: bottom;
+    position: relative;
+}
