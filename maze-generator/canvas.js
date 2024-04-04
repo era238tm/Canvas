@@ -19,7 +19,7 @@ let end = 0;
 /**
  * @param {number[]} weights 
  * @param {boolean[]} visited 
- * @returns {number}
+ * @returns {number} 
  */
 function getMinWeight(weights, visited) {
     let weight = Infinity;
@@ -35,12 +35,43 @@ function getMinWeight(weights, visited) {
     return index;
 }
 
+/**
+ * 
+ * @param {number} source 
+ * @returns {number} 
+ */
+function longestPath(source) {
+    const discovered = Array(maze.length).fill(false);
+    const queue = [source];
+
+    discovered[source] = true;
+    let uIndex = 0;
+
+    while (queue.length !== 0) {
+        uIndex = queue.shift();
+
+        for (let i = 0; i < maze[uIndex].length; i++) {
+            if (maze[uIndex][i] === undefined) {
+                continue;
+            }
+
+            let vIndex = maze[uIndex][i].id;
+
+            if (discovered[vIndex] === false) {
+                discovered[vIndex] = true;
+
+                queue.push(vIndex);
+            }
+        }
+    }
+
+    return uIndex;
+}
+
 function generateMaze() {
     const { width, height } = params;
 
     maze = Array.from({ length: width * height }, _ => []);
-    visited = [width * (height - 1)];
-    end = width - 1;
 
     for (let i = 0; i < maze.length; i++) {
         const x = i % width;
@@ -95,25 +126,28 @@ function generateMaze() {
 
         switch (parents[i]) {
             case i + 1:
-                maze[i][1] = { id: i + 1, weight: 1 };
-                maze[i + 1][3] = { id: i, weight: 1 };
+                maze[i][1] = { id: i + 1 };
+                maze[i + 1][3] = { id: i };
                 break;
 
             case i + width:
-                maze[i][2] = { id: i + width, weight: 1 };
-                maze[i + width][0] = { id: i, weight: 1 };
+                maze[i][2] = { id: i + width };
+                maze[i + width][0] = { id: i };
                 break;
 
             case i - 1:
-                maze[i][3] = { id: i - 1, weight: 1 };
-                maze[i - 1][1] = { id: i, weight: 1 };
+                maze[i][3] = { id: i - 1 };
+                maze[i - 1][1] = { id: i };
                 break;
 
             case i - width:
-                maze[i][0] = { id: i - width, weight: 1 };
-                maze[i - width][2] = { id: i, weight: 1 };
+                maze[i][0] = { id: i - width };
+                maze[i - width][2] = { id: i };
         }
     }
+
+    visited = [longestPath(Math.floor(Math.random() * maze.length))];
+    end = longestPath(visited[0]);
 
     updateCanvas();
 }
