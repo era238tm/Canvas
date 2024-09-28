@@ -9,28 +9,28 @@
 
 <body>
     <aside id="controls">
-        <section id="start">
+        <section id="start-state">
             <div class="input-block">
-                <input type="button" id="state" value="Explore">
+                <input type="button" id="maze-state" value="Explore">
             </div>
 
             <div class="input-block">
                 <label for="width">Maze Width: </label>
-                <input type="number" id="width" min="10" value="20">
+                <input type="number" id="maze-width" min="10" value="20">
             </div>
 
             <div class="input-block">
                 <label for="height">Maze Height: </label>
-                <input type="number" id="height" min="10" value="20">
+                <input type="number" id="maze-height" min="10" value="20">
             </div>
 
             <div class="input-block">
-                <input type="button" value="New Maze">
+                <input type="button" id="new-maze" value="New Maze">
             </div>
         </section>
 
-        <section id="game">
-            <div id="bindings">
+        <section id="game-state">
+            <div id="key-bindings">
                 <span><kbd>ʌ</kbd> Up</span>
                 <span><kbd>></kbd> Right</span>
                 <span><kbd>v</kbd> Bottom</span>

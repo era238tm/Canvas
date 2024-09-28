@@ -22,21 +22,25 @@ aside {
     border-radius: 8px;
 }
 
-#start, #bindings {
+#start-state, #key-bindings {
     display: grid;
     gap: 16px;
 }
 
-#start:not(:has(#state)) {
+#start-state:not(:has(#maze-state)) {
     display: none;
 }
 
-#bindings {
+#key-bindings {
     font-family: cursive;
     padding-top: 16px;
     border-top: 2px solid #858585;
     margin-top: 16px;
     grid-template-columns: 1fr 1fr;
+}
+
+#key-bindings:only-child {
+    display: none;
 }
 
 .input-block label {
@@ -58,7 +62,7 @@ aside {
     cursor: pointer;
 }
 
-#bindings kbd {
+#key-bindings kbd {
     font-weight: bold;
     padding: 4px 12px;
     border-radius: 2px;

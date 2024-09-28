@@ -2,14 +2,14 @@ const canvas = document.querySelector('canvas');
 const context = canvas.getContext('2d');
 
 const inputs = document.querySelectorAll('input');
-const [inputState, inputWidth, inputHeight, inputNew] = inputs;
+const [mazeState, mazeWidth, mazeHeight, newMaze] = inputs;
 
 const sections = document.querySelectorAll('section');
-const [start, game] = sections;
+const [startState, gameState] = sections;
 
 const params = {
-    width: +inputWidth.value,
-    height: +inputHeight.value
+    width: +mazeWidth.value,
+    height: +mazeHeight.value
 };
 
 let maze = [[{ id: 0, weight: 0 }]];
@@ -237,45 +237,44 @@ function handleChange(ev) {
     generateMaze();
 }
 
-inputWidth.addEventListener('change', handleChange);
-inputHeight.addEventListener('change', handleChange);
+mazeWidth.addEventListener('change', handleChange);
+mazeHeight.addEventListener('change', handleChange);
 
-inputState.addEventListener('click', function() {
-    if (this.closest('section') === start) {
-        game.prepend(this.parentElement);
+mazeState.addEventListener('click', function() {
+    if (this.closest('section') === startState) {
+        gameState.prepend(this.parentElement);
         this.value = 'Stop';
 
         visited = [visited[0]];
     }
     else {
-        start.prepend(this.parentElement);
+        startState.prepend(this.parentElement);
         this.value = 'Explore';
     }
 
     updateCanvas();
 });
 
-inputNew.addEventListener('click', generateMaze);
+newMaze.addEventListener('click', generateMaze);
 
 window.addEventListener('resize', updateCanvas);
 
 window.addEventListener('keydown', function(ev) {
-    if (inputState.closest('section') === game) {
+    if (mazeState.closest('section') === gameState) {
         const direction = ['Up', 'Right', 'Down', 'Left']
             .indexOf(ev.key.replace('Arrow', ''));
         const position = visited[visited.length - 1];
 
         if (direction !== -1 &&
-            maze[position][direction] !== undefined) {
+                maze[position][direction] !== undefined) {
             visited.push(maze[position][direction].id);
         }
 
         updateCanvas();
 
-        if (visited[visited.length - 1] === end)
-        {
-            start.prepend(inputState.parentElement);
-            inputState.value = 'Explore';
+        if (visited[visited.length - 1] === end) {
+            startState.prepend(mazeState.parentElement);
+            mazeState.value = 'Explore';
         }
     }
 });
